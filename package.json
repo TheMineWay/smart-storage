@@ -1,0 +1,23 @@
+{
+  "name": "smart-storage",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "build": "",
+    "test": "vitest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/TheMineWay/smart-storage"
+  },
+  "keywords": [
+    "web",
+    "storage"
+  ],
+  "author": "TheMineWay",
+  "license": "MIT",
+  "packageManager": "pnpm@10.6.2",
+  "devDependencies": {
+    "vitest": "^3.1.1"
+  }
+}

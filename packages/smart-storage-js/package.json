@@ -1,0 +1,26 @@
+{
+  "name": "smart-storage-js",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/TheMineWay/smart-storage",
+    "directory": "packages/smart-storage-js"
+  },
+  "keywords": [
+    "smart-storage",
+    "storage",
+    "web"
+  ],
+  "author": "TheMineWay",
+  "license": "MIT",
+  "packageManager": "pnpm@10.6.2",
+  "devDependencies": {
+    "typescript": "^5.8.3",
+    "vitest": "^3.1.1"
+  }
+}
