@@ -4,7 +4,8 @@
   "description": "",
   "scripts": {
     "build": "",
-    "test": "vitest"
+    "test": "vitest",
+    "test:ui": "vitest --ui"
   },
   "repository": {
     "type": "git",
@@ -16,8 +17,9 @@
   ],
   "author": "TheMineWay",
   "license": "MIT",
-  "packageManager": "pnpm@10.6.2",
+  "packageManager": "pnpm@10.8.0",
   "devDependencies": {
+    "@vitest/ui": "^3.1.1",
     "vitest": "^3.1.1"
   }
 }

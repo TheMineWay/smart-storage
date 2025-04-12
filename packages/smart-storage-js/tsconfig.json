@@ -15,7 +15,12 @@
       "resolveJsonModule": true,                   // Allow importing JSON files
       "isolatedModules": true,                     // Required if using Babel or swc
       "noEmitOnError": true,                       // Don't emit on type error
-      "strict": true                               // Enable all strict type-checking options
+      "strict": true,                              // Enable all strict type-checking options
+      "baseUrl": ".",
+      "paths": {
+        "@connector/*": ["src/connector/*"],
+        "@warehouse/*": ["src/warehouse/*"]
+      }
     },
     "include": ["src"],
     "exclude": ["dist", "node_modules", "**/*.test.ts"]
