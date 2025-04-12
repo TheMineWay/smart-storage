@@ -1,2 +1,2 @@
-export * from "./connector.interface";
+export * from "./connector.abstract";
 export * from "./defaults";

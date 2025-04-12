@@ -1,6 +1,6 @@
-import type { IConnector } from "../connector.interface";
+import { AConnector } from "../connector.abstract";
 
-export class SessionStorageConnector implements IConnector {
+export class SessionStorageConnector extends AConnector {
   get(key: string): string | null {
     return sessionStorage.getItem(key);
   }

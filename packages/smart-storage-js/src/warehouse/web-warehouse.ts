@@ -1,14 +1,14 @@
-import { IConnector } from "@connector";
+import { AConnector } from "@connector";
 
 export class WebWarehouse {
-  private static readonly connectors: Record<string, IConnector> = {};
+  private static readonly connectors: Record<string, AConnector> = {};
   private constructor() {}
 
-  public static getConnector(name: string): IConnector {
+  public static getConnector(name: string): AConnector {
     return this.connectors[name];
   }
 
-  public static setConnector(name: string, connector: IConnector): void {
+  public static setConnector(name: string, connector: AConnector): void {
     this.connectors[name] = connector;
   }
 

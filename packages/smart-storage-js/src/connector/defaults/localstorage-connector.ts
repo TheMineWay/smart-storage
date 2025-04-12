@@ -1,6 +1,6 @@
-import type { IConnector } from "../connector.interface";
+import { AConnector } from "../connector.abstract";
 
-export class LocalStorageConnector implements IConnector {
+export class LocalStorageConnector extends AConnector {
   get(key: string): string | null {
     return localStorage.getItem(key);
   }
