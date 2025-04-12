@@ -5,7 +5,10 @@
   "scripts": {
     "build": "",
     "test": "vitest",
-    "test:ui": "vitest --ui"
+    "test:ui": "vitest --ui",
+    "lint": "pnpm -r run lint",
+    "lint:fix": "pnpm -r run lint:fix",
+    "clean:all": "find . -type d \\( -name \"node_modules\" -or -name \"dist\" -or -name \"test-results\" -or -name \"playwright-report\" -or -name \".docusaurus\" -or -name \"build\" \\) -exec rm -rf {} +"
   },
   "repository": {
     "type": "git",

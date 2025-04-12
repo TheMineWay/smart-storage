@@ -1,11 +1,11 @@
 import type { IConnector } from "../connector.interface";
 
 export class LocalStorageConnector implements IConnector {
-  get(key: string): any {
+  get(key: string): string | null {
     return localStorage.getItem(key);
   }
 
-  set(key: string, value: any): void {
+  set(key: string, value: string): void {
     localStorage.setItem(key, value);
   }
 

@@ -1,6 +1,6 @@
 import { beforeEach, describe, expect, it } from "vitest";
-import { WebWarehouse } from "./web-warehouse";
-import { LocalStorageConnector } from "../connector";
+import { WebWarehouse } from "@warehouse";
+import { LocalStorageConnector } from "@connector";
 
 describe("WebWarehouse", () => {
   describe("should be able to", () => {

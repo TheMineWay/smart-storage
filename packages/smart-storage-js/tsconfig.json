@@ -1,28 +1,27 @@
 {
-    "compilerOptions": {
-      "target": "ES2020",                          // Modern JS for web
-      "module": "ESNext",                          // ESM output, change to 'CommonJS' if needed
-      "lib": ["DOM", "ES2020"],                    // Web environment
-      "declaration": true,                         // Generate .d.ts files
-      "declarationMap": true,                      // Include source maps for declarations
-      "sourceMap": true,                           // Include .map files
-      "outDir": "dist",                            // Output folder for compiled code
-      "rootDir": "src",                            // Where source files live
-      "moduleResolution": "Node",                  // Node-style resolution
-      "esModuleInterop": true,                     // Allow default imports from CJS
-      "skipLibCheck": true,                        // Skip type checking .d.ts files
-      "forceConsistentCasingInFileNames": true,    // Enforce file name casing
-      "resolveJsonModule": true,                   // Allow importing JSON files
-      "isolatedModules": true,                     // Required if using Babel or swc
-      "noEmitOnError": true,                       // Don't emit on type error
-      "strict": true,                              // Enable all strict type-checking options
-      "baseUrl": ".",
-      "paths": {
-        "@connector/*": ["src/connector/*"],
-        "@warehouse/*": ["src/warehouse/*"]
-      }
-    },
-    "include": ["src"],
-    "exclude": ["dist", "node_modules", "**/*.test.ts"]
-  }
-  
+  "compilerOptions": {
+    "target": "ES2020",
+    "module": "ESNext",
+    "lib": ["DOM", "ES2020"],
+    "declaration": true,
+    "declarationMap": true,
+    "sourceMap": true,
+    "outDir": "dist",
+    "rootDir": "src",
+    "moduleResolution": "Node",
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmitOnError": true,
+    "strict": true,
+    "baseUrl": ".",
+    "paths": {
+      "@connector": ["src/connector/index"],
+      "@warehouse": ["src/warehouse/index"]
+    }
+  },
+  "include": ["src"],
+  "exclude": ["dist", "node_modules", "**/*.test.ts"]
+}

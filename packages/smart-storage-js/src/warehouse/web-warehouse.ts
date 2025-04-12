@@ -1,4 +1,4 @@
-import { IConnector } from "../connector";
+import { IConnector } from "@connector";
 
 export class WebWarehouse {
   private static readonly connectors: Record<string, IConnector> = {};

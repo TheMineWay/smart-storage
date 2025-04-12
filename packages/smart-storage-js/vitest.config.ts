@@ -4,8 +4,8 @@ import path from "path";
 export default defineConfig({
   resolve: {
     alias: {
-      "@connector": path.resolve(__dirname, "src/connector"),
-      "@warehouse": path.resolve(__dirname, "src/warehouse"),
+      "@connector": path.resolve(__dirname, "src/connector/index.ts"),
+      "@warehouse": path.resolve(__dirname, "src/warehouse/index.ts"),
     },
   },
   test: {
