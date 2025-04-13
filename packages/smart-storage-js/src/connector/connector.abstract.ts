@@ -1,4 +1,5 @@
 import type { SmartStorageSchema } from "@types";
+import { UnsupportedSchemaTypeException } from "src/exceptions";
 
 export abstract class AConnector {
   /* IO */
@@ -11,7 +12,7 @@ export abstract class AConnector {
   parse<V>(schema: SmartStorageSchema<V>, value: unknown): V {
     if ("parse" in schema) return schema.parse(value);
     if ("cast" in schema) return schema.cast(value);
-    throw new Error("Unsupported schema type");
+    throw new UnsupportedSchemaTypeException();
   }
 
   /* Accessors */

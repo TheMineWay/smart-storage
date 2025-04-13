@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "build": "",
+    "build": "pnpm -r run build",
     "test": "vitest",
     "test:ui": "vitest --ui",
     "lint": "pnpm -r run lint",

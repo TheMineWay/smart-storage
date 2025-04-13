@@ -56,6 +56,13 @@ importers:
       smart-storage-js:
         specifier: workspace:*
         version: link:../packages/smart-storage-js
+    devDependencies:
+      vitest:
+        specifier: ^3.1.1
+        version: 3.1.1(@types/node@22.14.1)(@vitest/ui@3.1.1)(jsdom@26.0.0)
+      zod:
+        specifier: ^3.24.2
+        version: 3.24.2
 
 packages:
 
