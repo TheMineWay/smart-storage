@@ -19,7 +19,8 @@
     "baseUrl": ".",
     "paths": {
       "@connector": ["src/connector/index"],
-      "@warehouse": ["src/warehouse/index"]
+      "@warehouse": ["src/warehouse/index"],
+      "@types": ["src/types/index"]
     }
   },
   "include": ["src"],
