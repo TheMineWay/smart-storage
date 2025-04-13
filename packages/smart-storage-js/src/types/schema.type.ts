@@ -1,3 +1,3 @@
 import { ZodSchema } from "zod";
 
-export type SmartStorageSchema = ZodSchema;
+export type SmartStorageSchema<V> = ZodSchema<V>;

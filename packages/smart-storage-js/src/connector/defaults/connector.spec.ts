@@ -3,36 +3,63 @@
 import { afterEach } from "node:test";
 import { describe, expect, it } from "vitest";
 import { LocalStorageConnector } from "./localstorage-connector";
+import { InMemoryConnector } from "./in-memory-connector";
+import { SessionStorageConnector } from "./sessionstorage-connector";
 
 const STORAGES = [
-  { name: "localStorage", storage: window.localStorage },
-  { name: "sessionStorage", storage: window.sessionStorage },
+  () => {
+    return {
+      name: "localStorage",
+      storage: window.localStorage,
+      connector: new LocalStorageConnector(),
+      set: (k: string, v: string) => window.localStorage.setItem(k, v),
+    };
+  },
+  () => {
+    return {
+      name: "sessionStorage",
+      storage: window.sessionStorage,
+      connector: new SessionStorageConnector(),
+      set: (k: string, v: string) => window.sessionStorage.setItem(k, v),
+    };
+  },
+  () => {
+    const storage = new Map<string, unknown>();
+    return {
+      name: "memoryStorage",
+      storage,
+      connector: new InMemoryConnector(),
+      set: (k: string, v: unknown) => storage.set(k, v),
+    };
+  },
 ] as const;
 
 describe("Connector", () => {
-  describe.each(STORAGES)("$name connector", ({ storage }) => {
-    afterEach(() => {
-      storage.clear();
-    });
-
-    describe("get() should return", () => {
-      it("null if the key does not exist", () => {
-        const connector = new LocalStorageConnector();
-        const value = connector.get("nonexistentKey");
-        expect(value).toBe(null);
+  describe.each(STORAGES.map((s) => s()))(
+    "$name connector",
+    ({ storage, set, connector }) => {
+      afterEach(() => {
+        storage.clear();
       });
 
-      it("stored value", () => {
-        const connector = new LocalStorageConnector();
+      describe("rawGet() should return", () => {
+        it("null if the key does not exist", () => {
+          const value = connector.rawGet("nonexistentKey");
+          expect(value).toBe(null);
+        });
 
-        // Setup environment
-        const testValue = "testValue";
-        localStorage.setItem("testKey", testValue);
+        it("stored value", () => {
+          const connector = new LocalStorageConnector();
 
-        // Test
-        const value = connector.get("testKey");
-        expect(value).toBe(testValue);
+          // Setup environment
+          const testValue = "testValue";
+          set("testKey", testValue);
+
+          // Test
+          const value = connector.rawGet("testKey");
+          expect(value).toBe(testValue);
+        });
       });
-    });
-  });
+    }
+  );
 });
