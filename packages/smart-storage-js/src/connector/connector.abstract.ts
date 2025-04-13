@@ -7,13 +7,19 @@ export abstract class AConnector {
   abstract remove(key: string): void;
   abstract clear(): void;
 
+  /* Schema */
+  parse<V>(schema: SmartStorageSchema<V>, value: unknown): V {
+    if ("parse" in schema) return schema.parse(value);
+    if ("cast" in schema) return schema.cast(value);
+    throw new Error("Unsupported schema type");
+  }
+
   /* Accessors */
   get<V>(key: string, schema: SmartStorageSchema<V>): V {
-    const parsed = schema.parse(this.rawGet(key));
-    return parsed;
+    return this.parse(schema, this.rawGet(key));
   }
   set<V>(key: string, value: V, schema: SmartStorageSchema<V>) {
-    const parsed = schema.parse(value);
+    const parsed = this.parse(schema, value);
     this.rawSet(key, parsed);
   }
 }

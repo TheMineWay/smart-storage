@@ -1,0 +1,19 @@
+{
+  "name": "tests",
+  "version": "1.0.0",
+  "description": "Vanilla tests for the package",
+  "main": "index.js",
+  "scripts": {},
+  "keywords": [],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/TheMineWay/smart-storage",
+    "directory": "tests"
+  },
+  "author": "TheMineWay",
+  "license": "Mit",
+  "packageManager": "pnpm@10.8.0",
+  "dependencies": {
+    "smart-storage-js": "workspace:*"
+  }
+}
