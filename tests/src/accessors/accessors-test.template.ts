@@ -1,9 +1,9 @@
-import type { ZodEffects, ZodSchema, ZodString } from "zod";
+import type { z, ZodSchema } from "zod";
 
 type Schema = ZodSchema;
 
 export type SchemaDemos<S extends Schema> = {
-  fromJson: ZodEffects<ZodString>;
+  fromJson: (schema: Schema) => z.ZodEffects<z.ZodString, any, string>;
   user: S;
 };
 

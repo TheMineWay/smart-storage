@@ -7,10 +7,15 @@ import { z, type ZodSchema } from "zod";
 type Schema = ZodSchema;
 
 const SCHEMA_DEMOS: SchemaDemos<Schema> = {
-  fromJson: z.string().transform((value) => JSON.parse(value)),
+  fromJson: (schema: Schema) =>
+    z.string().transform((value) => schema.parse(JSON.parse(value))),
   user: z.object({
     name: z.string(),
-    age: z.number().min(0).max(120),
+    age: z
+      .union([z.string(), z.number()])
+      .transform((val) => (typeof val === "string" ? Number(val) : val))
+      .refine((val) => !isNaN(val))
+      .refine((val) => val >= 0 && val <= 120),
   }),
 };
 

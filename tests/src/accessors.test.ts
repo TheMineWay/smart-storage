@@ -69,7 +69,28 @@ describe("accessors", () => {
             // Try to get data
             const schema = connector.allowsObjectStorage
               ? service.getSchemaDemos().user
-              : service.getSchemaDemos().fromJson;
+              : service
+                  .getSchemaDemos()
+                  .fromJson(service.getSchemaDemos().user);
+            const data = connector.get(demoKey, schema);
+
+            expect(data).toEqual(USERS_MOCK.alice);
+          });
+
+          it("can convert data to schema", () => {
+            // Write data
+            const badUser = {
+              ...USERS_MOCK.alice,
+              age: "30",
+            };
+            safeRawSet(connector, demoKey, badUser);
+
+            // Try to get data
+            const schema = connector.allowsObjectStorage
+              ? service.getSchemaDemos().user
+              : service
+                  .getSchemaDemos()
+                  .fromJson(service.getSchemaDemos().user);
             const data = connector.get(demoKey, schema);
 
             expect(data).toEqual(USERS_MOCK.alice);
