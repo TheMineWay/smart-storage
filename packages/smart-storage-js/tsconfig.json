@@ -20,7 +20,8 @@
     "paths": {
       "@connector": ["src/connector/index"],
       "@warehouse": ["src/warehouse/index"],
-      "@types": ["src/types/index"]
+      "@types": ["src/types/index"],
+      "@exceptions": ["src/exceptions/index"]
     }
   },
   "include": ["src"],

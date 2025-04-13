@@ -3,6 +3,7 @@
 import { beforeEach, describe, expect, it } from "vitest";
 import { ZodAccessorsTest } from "./accessors/zod/zod.accessors-test";
 import {
+  AConnector,
   InMemoryConnector,
   LocalStorageConnector,
   SessionStorageConnector,
@@ -13,8 +14,16 @@ const demoKey = "demo-key";
 
 const LIBS = [{ name: "zod", service: new ZodAccessorsTest() }];
 const CONNECTORS = [
-  { name: "localStorage", connector: new LocalStorageConnector() },
-  { name: "sessionStorage", connector: new SessionStorageConnector() },
+  {
+    name: "localStorage",
+    connector: new LocalStorageConnector(),
+    jsonBased: true,
+  },
+  {
+    name: "sessionStorage",
+    connector: new SessionStorageConnector(),
+    jsonBased: true,
+  },
   { name: "inMemory", connector: new InMemoryConnector() },
 ];
 
@@ -55,13 +64,13 @@ describe("accessors", () => {
         describe("return parsed data when", () => {
           it("data matches schema", () => {
             // Write data
-            connector.rawSet(
-              demoKey,
-              JSON.stringify(JSON.stringify(USERS_MOCK.alice))
-            );
+            safeRawSet(connector, demoKey, USERS_MOCK.alice);
 
             // Try to get data
-            const data = connector.get(demoKey, service.getSchemaDemos().user);
+            const schema = connector.allowsObjectStorage
+              ? service.getSchemaDemos().user
+              : service.getSchemaDemos().fromJson;
+            const data = connector.get(demoKey, schema);
 
             expect(data).toEqual(USERS_MOCK.alice);
           });
@@ -70,3 +79,16 @@ describe("accessors", () => {
     });
   });
 });
+
+/* Utils */
+
+const safeRawSet = <T>(connector: AConnector, key: string, data: T) => {
+  if (connector.allowsObjectStorage) {
+    (connector as InMemoryConnector).rawSet(key, data);
+  } else {
+    (connector as LocalStorageConnector | SessionStorageConnector).rawSet(
+      key,
+      JSON.stringify(data)
+    );
+  }
+};

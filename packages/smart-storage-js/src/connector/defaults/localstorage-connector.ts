@@ -1,7 +1,11 @@
-import { AStringBasedConnector } from "../string-based-connector.abstract";
+import { AConnector } from "../connector.abstract";
 
-export class LocalStorageConnector extends AStringBasedConnector {
-  rawGet(key: string): string | null {
+export class LocalStorageConnector extends AConnector {
+  constructor() {
+    super("localStorage", false);
+  }
+
+  rawGet(key: string): unknown | null {
     return localStorage.getItem(key);
   }
   rawSet(key: string, value: string): void {

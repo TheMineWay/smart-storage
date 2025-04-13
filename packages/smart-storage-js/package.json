@@ -5,6 +5,7 @@
   "main": "dist/index.js",
   "scripts": {
     "build": "tsc",
+    "dev": "tsc --watch",
     "lint": "eslint"
   },
   "repository": {

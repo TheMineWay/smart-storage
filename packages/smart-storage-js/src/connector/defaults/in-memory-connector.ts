@@ -1,10 +1,14 @@
 import { AConnector } from "../connector.abstract";
 
 export class InMemoryConnector extends AConnector {
+  constructor() {
+    super("inMemory", true);
+  }
+
   private readonly storage: Map<string, unknown> = new Map();
 
-  rawGet(key: string): unknown | null {
-    const value = this.storage.get(key);
+  rawGet<V>(key: string): V | null {
+    const value = this.storage.get(key) as V;
     if (value === undefined) {
       return null;
     }

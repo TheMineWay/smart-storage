@@ -4,6 +4,7 @@
   "description": "",
   "scripts": {
     "build": "pnpm -r run build",
+    "dev": "pnpm -r run dev",
     "test": "vitest",
     "test:ui": "vitest --ui",
     "lint": "pnpm -r run lint",

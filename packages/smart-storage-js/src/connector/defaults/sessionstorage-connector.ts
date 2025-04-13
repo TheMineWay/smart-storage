@@ -1,6 +1,10 @@
-import { AStringBasedConnector } from "../string-based-connector.abstract";
+import { AConnector } from "../connector.abstract";
 
-export class SessionStorageConnector extends AStringBasedConnector {
+export class SessionStorageConnector extends AConnector {
+  constructor() {
+    super("sessionStorage", false);
+  }
+
   rawGet(key: string): string | null {
     return sessionStorage.getItem(key);
   }
