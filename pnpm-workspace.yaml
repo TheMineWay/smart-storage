@@ -2,6 +2,9 @@ packages:
   - packages/*
   - apps/*
   - tests
+  - docs
 
 onlyBuiltDependencies:
+  - core-js
+  - core-js-pure
   - esbuild

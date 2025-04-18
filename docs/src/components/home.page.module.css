@@ -1,0 +1,54 @@
+.container {
+    width: 100%;
+}
+
+.header {
+    width: 100%;
+    position: relative;
+}
+
+.header > .branding {
+    height: 15em;
+    width: 100%;
+    object-fit: cover;
+}
+
+.header > .card-container {
+    position: absolute;
+    top: 0;
+    z-index: 1;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 6em;
+}
+
+.card {
+    background-color: var(--ifm-background-color);
+    width: min(100%, 80em);
+    min-height: 15em;
+    box-shadow: 1px 1px 5px var(--ifm-shadow-color);
+    border-radius: 15px;
+    padding: 1.5em;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.card > .content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.card > .actions {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.branding {
+    background: linear-gradient(90deg, magenta, cyan);
+}
