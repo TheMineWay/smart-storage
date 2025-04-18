@@ -11,7 +11,7 @@ const config: Config = {
   favicon: "favicon.ico",
 
   // Set the production url of your site here
-  url: "https://your-docusaurus-site.example.com",
+  url: "https://themineway.github.io",
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
   baseUrl: "/smart-storage/",
@@ -61,9 +61,15 @@ const config: Config = {
       items: [
         {
           type: "docSidebar",
-          sidebarId: "tutorialSidebar",
+          sidebarId: "vanillaLibrarySidebar",
           position: "left",
-          label: "Tutorial",
+          label: "Vanilla JS/TS",
+        },
+        {
+          type: "docSidebar",
+          sidebarId: "reactLibrarySidebar",
+          position: "left",
+          label: "React",
         },
         {
           href: GLOBAL_CONSTANTS.repo,
