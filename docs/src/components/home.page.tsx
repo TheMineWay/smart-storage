@@ -1,5 +1,6 @@
 import config from "@site/docusaurus.config";
 import styles from "./home.page.module.css";
+import { GLOBAL_CONSTANTS } from "@site/constants";
 
 const HomePage: React.FC = () => {
   const { title, tagline } = config;
@@ -14,7 +15,9 @@ const HomePage: React.FC = () => {
               <p>{tagline}</p>
             </div>
             <div className={styles.actions}>
-              <a href="/docs">Documentation</a>
+              <a href={GLOBAL_CONSTANTS.repo} target="_blank">
+                Source code
+              </a>
             </div>
           </div>
         </div>
