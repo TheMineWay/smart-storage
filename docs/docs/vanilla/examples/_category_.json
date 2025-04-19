@@ -1,0 +1,11 @@
+{
+  "position": 5,
+  "label": "Examples",
+  "customProps": {
+    "description": "Examples of using the Vanilla API"
+  },
+  "link": {
+    "type": "generated-index",
+    "title": "Examples"
+  }
+}

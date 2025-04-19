@@ -1,0 +1,11 @@
+{
+  "position": 4,
+  "label": "API reference",
+  "customProps": {
+    "description": "API reference for the Vanilla JavaScript version of the library."
+  },
+  "link": {
+    "type": "generated-index",
+    "title": "API reference"
+  }
+}
