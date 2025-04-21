@@ -7,8 +7,6 @@ import { z, type ZodSchema } from "zod";
 type Schema = ZodSchema;
 
 const SCHEMA_DEMOS: SchemaDemos<Schema> = {
-  fromJson: (schema: Schema) =>
-    z.string().transform((value) => schema.parse(JSON.parse(value))),
   user: z.object({
     name: z.string(),
     age: z

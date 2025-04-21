@@ -1,9 +1,8 @@
-import type { z, ZodSchema } from "zod";
+import { EmptySmartStorageSchema } from "smart-storage-js";
 
-type Schema = ZodSchema;
+type Schema = EmptySmartStorageSchema;
 
 export type SchemaDemos<S extends Schema> = {
-  fromJson: (schema: Schema) => z.ZodEffects<z.ZodString, any, string>;
   user: S;
 };
 

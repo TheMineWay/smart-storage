@@ -7,8 +7,8 @@ export abstract class AConnector {
   ) {}
 
   /* IO */
-  abstract rawGet(key: string): unknown | null;
-  abstract rawSet(key: string, value: unknown): void;
+  protected abstract rawGet(key: string): unknown | null;
+  protected abstract rawSet(key: string, value: unknown): void;
   abstract remove(key: string): void;
   abstract clear(): void;
 
@@ -21,8 +21,10 @@ export abstract class AConnector {
   }
 
   /* Accessors */
-  get<V extends object>(key: string, schema: SmartStorageSchema<V>): V {
-    return this.parse(schema, this.rawGet(key));
+  get<V extends object>(key: string, schema: SmartStorageSchema<V>): V | null {
+    const value = this.rawGet(key);
+    if (value === null) return null;
+    return this.parse(schema, value);
   }
 
   set<V extends object>(key: string, value: V, schema: SmartStorageSchema<V>) {

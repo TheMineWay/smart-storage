@@ -1,6 +1,6 @@
-import { AConnector } from "../connector.abstract";
+import { AStringConnector } from "../string-connector.abstract";
 
-export class SessionStorageConnector extends AConnector {
+export class SessionStorageConnector extends AStringConnector {
   constructor() {
     super("sessionStorage", false);
   }
