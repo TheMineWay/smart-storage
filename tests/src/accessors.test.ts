@@ -97,6 +97,30 @@ describe("accessors", () => {
           });
         });
       });
+
+      // SET
+      describe("set(key, data) should", () => {
+        it("throw an error when data does not match schema", () => {
+          const data = { ...USERS_MOCK.alice, name: new Date() };
+
+          // Try to set data
+          expect(() => {
+            connector.set(demoKey, data, service.getSchemaDemos().user);
+          }).toThrowError();
+        });
+
+        describe("set data when", () => {
+          it("matches schema as is", () => {
+            const data = USERS_MOCK.alice;
+
+            connector.set(demoKey, data, service.getSchemaDemos().user);
+
+            expect(
+              connector.get(demoKey, service.getSchemaDemos().user)
+            ).toEqual(data);
+          });
+        });
+      });
     });
   });
 });
