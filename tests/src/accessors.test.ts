@@ -19,21 +19,18 @@ const CONNECTORS = [
   {
     name: "localStorage",
     connector: new LocalStorageConnector(),
-    jsonBased: true,
     insert: (key: string, value: object) =>
       localStorage.setItem(key, JSON.stringify({ d: value })),
   },
   {
     name: "sessionStorage",
     connector: new SessionStorageConnector(),
-    jsonBased: true,
     insert: (key: string, value: object) =>
       sessionStorage.setItem(key, JSON.stringify({ d: value })),
   },
   {
     name: "inMemory",
     connector: IN_MEMORY_CONNECTOR,
-    jsonBased: false,
     insert: (key: string, value: object) => IN_MEMORY_MAP.set(key, value),
   },
 ];
@@ -119,6 +116,45 @@ describe("accessors", () => {
 
               expect(connector.get(demoKey, USER_SCHEMA)).toEqual(data);
             });
+          });
+        });
+
+        // REMOVE
+        describe("remove(key) should", () => {
+          it("remove a key from the connector", () => {
+            const data = USERS_MOCK.alice;
+
+            // Write data
+            insert(demoKey, data);
+            expect(connector.get(demoKey, USER_SCHEMA)).toEqual(data);
+
+            // Try to remove data
+            connector.remove(demoKey);
+
+            expect(connector.get(demoKey, USER_SCHEMA)).toBeNull();
+          });
+
+          it("do nothing when the key is not found", () => {
+            // Try to remove data
+            connector.remove(demoKey);
+
+            expect(connector.get(demoKey, USER_SCHEMA)).toBeNull();
+          });
+        });
+
+        // CLEAR
+        describe("clear() should", () => {
+          it("remove all keys from the connector", () => {
+            const data = USERS_MOCK.alice;
+
+            // Write data
+            insert(demoKey, data);
+            expect(connector.get(demoKey, USER_SCHEMA)).toEqual(data);
+
+            // Try to clear data
+            connector.clear();
+
+            expect(connector.get(demoKey, USER_SCHEMA)).toBeNull();
           });
         });
       }
