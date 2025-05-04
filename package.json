@@ -1,7 +1,8 @@
 {
   "name": "smart-storage",
   "version": "1.0.0",
-  "description": "",
+  "description": "A TS/JS library that provides a smart and easy way to store data",
+  "homepage": "https://themineway.github.io/smart-storage/",
   "scripts": {
     "build": "pnpm -r run build",
     "dev": "pnpm -r run dev",
