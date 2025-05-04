@@ -14,7 +14,7 @@
   "license": "Mit",
   "packageManager": "pnpm@10.8.0",
   "dependencies": {
-    "smart-storage-js": "workspace:*"
+    "@themineway/smart-storage-js": "workspace:*"
   },
   "devDependencies": {
     "vitest": "^3.1.1",

@@ -1,4 +1,4 @@
-import { EmptySmartStorageSchema } from "smart-storage-js";
+import { EmptySmartStorageSchema } from "@themineway/smart-storage-js";
 
 type Schema = EmptySmartStorageSchema;
 

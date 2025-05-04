@@ -6,7 +6,7 @@ import {
   InMemoryConnector,
   LocalStorageConnector,
   SessionStorageConnector,
-} from "smart-storage-js";
+} from "@themineway/smart-storage-js";
 import { USERS_MOCK } from "./mocks/users.mock";
 
 const demoKey = "demo-key";

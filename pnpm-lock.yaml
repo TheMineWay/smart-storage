@@ -93,7 +93,7 @@ importers:
 
   tests:
     dependencies:
-      smart-storage-js:
+      '@themineway/smart-storage-js':
         specifier: workspace:*
         version: link:../packages/smart-storage-js
     devDependencies:
