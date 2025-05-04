@@ -1,5 +1,5 @@
 {
-  "name": "smart-storage-js",
+  "name": "@themineway/smart-storage-js",
   "version": "1.0.0-alpha.1",
   "description": "",
   "main": "dist/index.js",
