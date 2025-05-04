@@ -28,7 +28,6 @@ jobs:
         run: pnpm install
 
       - name: 🔨 Build the library
-        working-directory: packages/smart-storage-js
         run: pnpm build
 
       - name: 🌐 Publish to npm
