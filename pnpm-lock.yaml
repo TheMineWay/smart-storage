@@ -91,6 +91,49 @@ importers:
         specifier: ^3.24.3
         version: 3.24.3
 
+  packages/smart-storage-react:
+    dependencies:
+      react:
+        specifier: ^19.1.0
+        version: 19.1.0
+    devDependencies:
+      '@eslint/js':
+        specifier: ^9.25.0
+        version: 9.25.0
+      '@eslint/json':
+        specifier: ^0.12.0
+        version: 0.12.0
+      '@types/node':
+        specifier: ^22.14.1
+        version: 22.14.1
+      '@types/react':
+        specifier: ^19.1.2
+        version: 19.1.2
+      eslint:
+        specifier: ^9.25.0
+        version: 9.25.0(jiti@1.21.7)
+      globals:
+        specifier: ^16.0.0
+        version: 16.0.0
+      jsdom:
+        specifier: ^26.1.0
+        version: 26.1.0
+      typescript:
+        specifier: ^5.8.3
+        version: 5.8.3
+      typescript-eslint:
+        specifier: ^8.30.1
+        version: 8.30.1(eslint@9.25.0(jiti@1.21.7))(typescript@5.8.3)
+      vitest:
+        specifier: ^3.1.1
+        version: 3.1.1(@types/debug@4.1.12)(@types/node@22.14.1)(@vitest/ui@3.1.1)(jiti@1.21.7)(jsdom@26.1.0)(terser@5.39.0)
+      yup:
+        specifier: ^1.6.1
+        version: 1.6.1
+      zod:
+        specifier: ^3.24.3
+        version: 3.24.3
+
   tests:
     dependencies:
       '@themineway/smart-storage-js':
@@ -8277,7 +8320,7 @@ snapshots:
 
   '@types/sax@1.2.7':
     dependencies:
-      '@types/node': 17.0.45
+      '@types/node': 22.14.1
 
   '@types/send@0.17.4':
     dependencies:
