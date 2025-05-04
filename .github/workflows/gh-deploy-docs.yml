@@ -30,7 +30,7 @@ jobs:
           pnpm install
 
       - name: 🔨 Build documentation
-        run: pnpm build:docs
+        run: pnpm docs:build
 
       - name: Upload Build Artifact
         uses: actions/upload-pages-artifact@v3
