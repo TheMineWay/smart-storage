@@ -30,25 +30,29 @@ export abstract class AConnector {
   set<V extends object>(key: string, value: V, schema?: SmartStorageSchema<V>) {
     const parsed = schema ? this.parse(schema, value) : (value as V);
     this.rawSet(key, parsed);
-    this.triggerOnChange();
+    this.triggerOnChange(key);
   }
 
   /* Events */
   private onChangeEvents = new Map<number, CallableFunction>();
 
-  public addOnChangeListener(callback: CallableFunction): number {
+  public addOnChangeListener(
+    callback: (key: string) => void
+  ): CallableFunction {
     const newKey = new Date().getTime();
     this.onChangeEvents.set(newKey, callback);
-    return newKey;
+    return () => {
+      this.removeOnChangeListener(newKey);
+    };
   }
 
-  public removeOnChangeListener(key: number) {
+  private removeOnChangeListener(key: number) {
     this.onChangeEvents.delete(key);
   }
 
-  public triggerOnChange() {
+  public triggerOnChange(key: string) {
     for (const [, callback] of this.onChangeEvents.entries()) {
-      callback();
+      callback(key);
     }
   }
 }

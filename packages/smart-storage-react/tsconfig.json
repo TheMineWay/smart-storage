@@ -19,9 +19,7 @@
     "jsx": "react-jsx",
     "baseUrl": ".",
     "paths": {
-      "@hooks": ["src/hooks/index"],
-      "@providers": ["src/providers/index"],
-      "@types": ["src/types/index"]
+      "@hooks": ["src/hooks/index"]
     }
   },
   "include": ["src"],
