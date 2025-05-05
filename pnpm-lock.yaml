@@ -99,6 +99,13 @@ importers:
         version: 5.8.3
 
   packages/smart-storage-js:
+    dependencies:
+      yup:
+        specifier: ^1.6.1
+        version: 1.6.1
+      zod:
+        specifier: ^3.24.3
+        version: 3.24.3
     devDependencies:
       '@eslint/js':
         specifier: ^9.25.0
@@ -127,12 +134,6 @@ importers:
       vitest:
         specifier: ^3.1.1
         version: 3.1.1(@types/debug@4.1.12)(@types/node@22.14.1)(@vitest/ui@3.1.1)(jiti@1.21.7)(jsdom@26.1.0)(terser@5.39.0)
-      yup:
-        specifier: ^1.6.1
-        version: 1.6.1
-      zod:
-        specifier: ^3.24.3
-        version: 3.24.3
 
   packages/smart-storage-react:
     dependencies:
