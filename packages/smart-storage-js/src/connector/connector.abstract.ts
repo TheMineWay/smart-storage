@@ -21,14 +21,14 @@ export abstract class AConnector {
   }
 
   /* Accessors */
-  get<V extends object>(key: string, schema: SmartStorageSchema<V>): V | null {
+  get<V extends object>(key: string, schema?: SmartStorageSchema<V>): V | null {
     const value = this.rawGet(key);
     if (value === null) return null;
-    return this.parse(schema, value);
+    return schema ? this.parse(schema, value) : (value as V);
   }
 
-  set<V extends object>(key: string, value: V, schema: SmartStorageSchema<V>) {
-    const parsed = this.parse(schema, value);
+  set<V extends object>(key: string, value: V, schema?: SmartStorageSchema<V>) {
+    const parsed = schema ? this.parse(schema, value) : (value as V);
     this.rawSet(key, parsed);
     this.triggerOnChange();
   }
