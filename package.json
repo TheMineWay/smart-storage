@@ -11,6 +11,7 @@
     "lint": "pnpm -r run lint",
     "lint:fix": "pnpm -r run lint:fix",
     "js:build": "pnpm --filter './packages/smart-storage-js' build",
+    "react:build": "pnpm --filter './packages/smart-storage-react' build",
     "docs:dev": "cd docs && pnpm start",
     "docs:build": "cd docs && pnpm build",
     "docs:clean": "cd docs && pnpm clean",

@@ -30,5 +30,23 @@ export abstract class AConnector {
   set<V extends object>(key: string, value: V, schema: SmartStorageSchema<V>) {
     const parsed = this.parse(schema, value);
     this.rawSet(key, parsed);
+    this.triggerOnChange();
+  }
+
+  /* Events */
+  private onChangeEvents = new Map<string, CallableFunction>();
+
+  public addOnChangeListener(key: string, callback: CallableFunction) {
+    this.onChangeEvents.set("_" + key, callback);
+  }
+
+  public removeOnChangeListener(key: string) {
+    this.onChangeEvents.delete(key);
+  }
+
+  public triggerOnChange() {
+    for (const [, callback] of this.onChangeEvents.entries()) {
+      callback();
+    }
   }
 }

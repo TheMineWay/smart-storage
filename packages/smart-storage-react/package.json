@@ -5,8 +5,8 @@
   "homepage": "https://themineway.github.io/smart-storage/docs/react/",
   "main": "dist/index.js",
   "scripts": {
-    "build": "tsc",
-    "dev": "tsc --watch",
+    "build": "tsc --project tsconfig.build.json",
+    "dev": "tsc --project tsconfig.build.json --watch",
     "lint": "eslint"
   },
   "repository": {
@@ -38,6 +38,7 @@
     "zod": "^3.24.3"
   },
   "dependencies": {
-    "react": "^19.1.0"
+    "react": "^19.1.0",
+    "@themineway/smart-storage-js": "workspace:*"
   }
 }

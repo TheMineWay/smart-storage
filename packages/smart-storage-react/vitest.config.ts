@@ -4,10 +4,9 @@ import path from "path";
 export default defineConfig({
   resolve: {
     alias: {
-      "@connector": path.resolve(__dirname, "src/connector/index.ts"),
-      "@warehouse": path.resolve(__dirname, "src/warehouse/index.ts"),
+      "@hooks": path.resolve(__dirname, "src/hooks/index.ts"),
+      "@providers": path.resolve(__dirname, "src/providers/index.ts"),
       "@types": path.resolve(__dirname, "src/types/index.ts"),
-      "@exceptions": path.resolve(__dirname, "src/exceptions/index.ts"),
     },
   },
   test: {

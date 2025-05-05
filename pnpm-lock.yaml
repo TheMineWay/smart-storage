@@ -136,6 +136,9 @@ importers:
 
   packages/smart-storage-react:
     dependencies:
+      '@themineway/smart-storage-js':
+        specifier: workspace:*
+        version: link:../smart-storage-js
       react:
         specifier: ^19.1.0
         version: 19.1.0
