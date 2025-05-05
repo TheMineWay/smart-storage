@@ -19,9 +19,10 @@
     "jsx": "react-jsx",
     "baseUrl": ".",
     "paths": {
-      "@hooks": ["src/hooks/index"]
+      "@hooks": ["src/hooks/index"],
+      "@themineway/smart-storage-js": ["../smart-storage-js/dist/index"]
     }
   },
-  "include": ["src"],
+  "include": ["src", "../smart-storage-js/dist"],
   "exclude": ["dist", "node_modules"]
 }
