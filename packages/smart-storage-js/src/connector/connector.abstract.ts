@@ -34,13 +34,15 @@ export abstract class AConnector {
   }
 
   /* Events */
-  private onChangeEvents = new Map<string, CallableFunction>();
+  private onChangeEvents = new Map<number, CallableFunction>();
 
-  public addOnChangeListener(key: string, callback: CallableFunction) {
-    this.onChangeEvents.set("_" + key, callback);
+  public addOnChangeListener(callback: CallableFunction): number {
+    const newKey = new Date().getTime();
+    this.onChangeEvents.set(newKey, callback);
+    return newKey;
   }
 
-  public removeOnChangeListener(key: string) {
+  public removeOnChangeListener(key: number) {
     this.onChangeEvents.delete(key);
   }
 
