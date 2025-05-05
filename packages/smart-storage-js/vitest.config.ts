@@ -11,6 +11,6 @@ export default defineConfig({
     },
   },
   test: {
-    exclude: [],
+    exclude: ["node_modules", "dist"],
   },
 });
