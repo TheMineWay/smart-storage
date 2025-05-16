@@ -25,7 +25,12 @@ export abstract class AConnector {
   get<V extends object>(key: string, schema?: SmartStorageSchema<V>): V | null {
     const value = this.rawGet(key);
     if (value === null) return null;
-    return schema ? this.parse(schema, value) : (value as V);
+    try {
+      return schema ? this.parse(schema, value) : (value as V);
+    } catch {
+      this.remove(key);
+      return null;
+    }
   }
 
   set<V extends object>(key: string, value: V, schema?: SmartStorageSchema<V>) {
