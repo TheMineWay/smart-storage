@@ -21,7 +21,12 @@ export abstract class AStringConnector extends AConnector {
     if (raw === null) return null;
     const parsed = JSON.parse(raw) as StoredMetadata<V>;
 
-    return this.parse(schema, parsed.d);
+    try {
+      return this.parse(schema, parsed.d);
+    } catch {
+      this.remove(key);
+      return null;
+    }
   }
 
   set<V extends object>(key: string, value: V, schema: SmartStorageSchema<V>) {
