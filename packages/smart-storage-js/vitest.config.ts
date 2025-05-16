@@ -13,4 +13,14 @@ export default defineConfig({
   test: {
     exclude: ["node_modules", "dist"],
   },
+  build: {
+    lib: {
+      entry: path.resolve(__dirname, "src/index.ts"),
+      name: "SmartStorageJs",
+      fileName: (format) => `smart-storage.${format}.js`,
+    },
+    rollupOptions: {
+      external: [],
+    },
+  },
 });
