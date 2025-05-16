@@ -1,6 +1,6 @@
 {
   "name": "@themineway/smart-storage-react",
-  "version": "1.0.0-alpha.4",
+  "version": "1.0.0-alpha.5",
   "description": "A React (TS) library that provides a smart and easy way to store data",
   "homepage": "https://themineway.github.io/smart-storage/docs/react/",
   "main": "dist/index.js",

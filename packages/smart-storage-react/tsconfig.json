@@ -23,6 +23,6 @@
       "@themineway/smart-storage-js": ["../smart-storage-js/dist/index"]
     }
   },
-  "include": ["../smart-storage-js/dist"],
+  "include": ["../smart-storage-js/src"],
   "exclude": ["dist", "node_modules"]
 }
