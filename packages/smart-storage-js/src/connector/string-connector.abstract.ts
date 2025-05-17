@@ -34,5 +34,6 @@ export abstract class AStringConnector extends AConnector {
     const data: StoredMetadata<V> = { d: parsed };
 
     this.rawSet(key, JSON.stringify(data));
+    this.triggerOnChange(key);
   }
 }
