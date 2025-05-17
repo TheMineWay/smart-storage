@@ -48,21 +48,6 @@ describe("accessors", () => {
 
         // GET
         describe("get(key, schema) should", () => {
-          // Errors
-          describe("throw an error when", () => {
-            it("expected schema does not match data", () => {
-              const data = USERS_MOCK.alice;
-
-              // Write bad formatted data
-              insert(demoKey, { ...data, name: { createdAt: new Date() } });
-
-              // Try to get data
-              expect(() => {
-                const d = connector.get(demoKey, service.getSchemaDemos().user);
-              }).toThrowError();
-            });
-          });
-
           // Success
           describe("return parsed data when", () => {
             it("data matches schema", () => {
@@ -90,10 +75,24 @@ describe("accessors", () => {
             });
           });
 
-          it("return null when the key is not found", () => {
-            expect(
-              connector.get(demoKey, service.getSchemaDemos().user)
-            ).toBeNull();
+          describe("return null when", () => {
+            it("expected schema does not match data", () => {
+              const data = USERS_MOCK.alice;
+
+              // Write bad formatted data
+              insert(demoKey, { ...data, name: { createdAt: new Date() } });
+
+              // Try to get data
+              expect(
+                connector.get(demoKey, service.getSchemaDemos().user)
+              ).toBeNull();
+            });
+
+            it("the key is not found", () => {
+              expect(
+                connector.get(demoKey, service.getSchemaDemos().user)
+              ).toBeNull();
+            });
           });
         });
 
