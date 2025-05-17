@@ -30,6 +30,9 @@ jobs:
       - name: 🔨 Build the library
         run: pnpm js:build
 
+      - name: 🧹 Clean source
+        run: rm -r packages/smart-storage-js/src
+
       - name: 🔧 Configure npm registry
         run: echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" > ~/.npmrc
 

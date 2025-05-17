@@ -33,6 +33,9 @@ jobs:
       - name: 🔨 Build the library
         run: pnpm react:build
 
+      - name: 🧹 Clean source
+        run: rm -r packages/smart-storage-react/src
+
       - name: 🔧 Configure npm registry
         run: echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" > ~/.npmrc
 
