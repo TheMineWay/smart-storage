@@ -15,7 +15,7 @@ export abstract class AConnector {
   /* Schema */
   parse<V>(schema: SmartStorageSchema<V>, value: unknown): V {
     if (!schema) return value as V;
-    if ("parse" in schema) return schema.parse(value) as V;
+    if ("parse" in schema) return schema.parse(value);
     if ("cast" in schema) return schema.cast(value);
     //throw new UnsupportedSchemaTypeException(); // TODO
     throw new Error();
