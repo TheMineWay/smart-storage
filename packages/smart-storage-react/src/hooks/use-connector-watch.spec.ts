@@ -4,6 +4,11 @@ import { describe, expect, it, vi } from "vitest";
 import { renderHook, act } from "@testing-library/react";
 import { useConnectorWatch } from "./use-connector-watch";
 import { InMemoryConnector } from "@themineway/smart-storage-js";
+import { z } from "zod";
+
+const SCHEMA = z.object({
+  name: z.string(),
+});
 
 describe("useConnectorWatch(connector, key, schema) should", () => {
   describe("watch for value changes", () => {
@@ -12,7 +17,7 @@ describe("useConnectorWatch(connector, key, schema) should", () => {
       const connector = new InMemoryConnector();
 
       renderHook(() => {
-        useConnectorWatch(connector, "test", {
+        useConnectorWatch(connector, "test", SCHEMA, {
           onChange,
         });
       });

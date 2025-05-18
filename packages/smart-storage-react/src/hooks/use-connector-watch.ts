@@ -5,14 +5,14 @@ import type {
 import { useEffect, useState } from "react";
 
 type Options<V extends object> = {
-  schema?: SmartStorageSchema<V>;
   onChange?: (value: V | null) => void;
 };
 
 export const useConnectorWatch = <V extends object>(
   connector: AConnector,
   key: string,
-  { schema, onChange }: Options<V> = {}
+  schema?: SmartStorageSchema<V>,
+  { onChange }: Options<V> = {}
 ) => {
   const [value, setValue] = useState<V | null>(connector.get(key, schema));
 
