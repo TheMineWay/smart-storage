@@ -1,5 +1,4 @@
-import type { ZodSchema } from "zod";
-import type { Schema as YupSchema } from "yup";
+import type { z } from "zod";
 
-export type SmartStorageSchema<V> = ZodSchema<V> | YupSchema<V>;
-export type EmptySmartStorageSchema = ZodSchema | YupSchema;
+export type SmartStorageSchema<V extends z.ZodRawShape> = z.ZodObject<V>;
+export type EmptySmartStorageSchema = z.ZodObject<z.ZodRawShape>;

@@ -1,6 +1,6 @@
 import type {
   AConnector,
-  SmartStorageSchema,
+  EmptySmartStorageSchema,
 } from "@themineway/smart-storage-js";
 import { useEffect, useState } from "react";
 
@@ -11,7 +11,7 @@ type Options<V extends object> = {
 export const useConnectorWatch = <V extends object>(
   connector: AConnector,
   key: string,
-  schema?: SmartStorageSchema<V>,
+  schema?: EmptySmartStorageSchema,
   { onChange }: Options<V> = {}
 ) => {
   const [value, setValue] = useState<V | null>(connector.get(key, schema));

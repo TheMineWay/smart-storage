@@ -1,4 +1,4 @@
-import { SmartStorageSchema } from "@types";
+import { EmptySmartStorageSchema } from "@types";
 import { AConnector } from "./connector.abstract";
 import { StoredMetadata } from "src/types/metadata/stored-metadata.type";
 
@@ -15,22 +15,29 @@ export abstract class AStringConnector extends AConnector {
   }
 
   /* Accessors */
-  get<V extends object>(key: string, schema: SmartStorageSchema<V>): V | null {
+  get<V extends object>(
+    key: string,
+    schema: EmptySmartStorageSchema
+  ): V | null {
     const raw = this.rawGet(key) as string | null;
 
     if (raw === null) return null;
     const parsed = JSON.parse(raw) as StoredMetadata<V>;
 
     try {
-      return this.parse(schema, parsed.d);
+      return this.parse<V>(schema, parsed.d);
     } catch {
       this.remove(key);
       return null;
     }
   }
 
-  set<V extends object>(key: string, value: V, schema: SmartStorageSchema<V>) {
-    const parsed = this.parse(schema, value);
+  set<V extends object>(
+    key: string,
+    value: V,
+    schema: EmptySmartStorageSchema
+  ) {
+    const parsed = this.parse<V>(schema, value);
     const data: StoredMetadata<V> = { d: parsed };
 
     this.rawSet(key, JSON.stringify(data));

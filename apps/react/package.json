@@ -11,10 +11,13 @@
   },
   "dependencies": {
     "react": "^19.1.0",
-    "react-dom": "^19.1.0"
+    "react-dom": "^19.1.0",
+    "zod": "^3.25.56"
   },
   "devDependencies": {
     "@eslint/js": "^9.28.0",
+    "@themineway/smart-storage-js": "workspace:*",
+    "@themineway/smart-storage-react": "workspace:*",
     "@types/react": "^19.1.6",
     "@types/react-dom": "^19.1.6",
     "@vitejs/plugin-react-swc": "^3.10.1",

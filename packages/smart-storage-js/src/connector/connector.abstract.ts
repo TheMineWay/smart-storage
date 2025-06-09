@@ -1,4 +1,4 @@
-import type { SmartStorageSchema } from "@types";
+import type { EmptySmartStorageSchema } from "@types";
 
 export abstract class AConnector {
   constructor(
@@ -13,28 +13,32 @@ export abstract class AConnector {
   abstract clear(): void;
 
   /* Schema */
-  parse<V>(schema: SmartStorageSchema<V>, value: unknown): V {
+  parse<V extends object>(schema: EmptySmartStorageSchema, value: unknown): V {
     if (!schema) return value as V;
-    if ("parse" in schema) return schema.parse(value);
-    if ("cast" in schema) return schema.cast(value);
-    //throw new UnsupportedSchemaTypeException(); // TODO
-    throw new Error();
+    return schema.parse(value) as V;
   }
 
   /* Accessors */
-  get<V extends object>(key: string, schema?: SmartStorageSchema<V>): V | null {
+  get<V extends object>(
+    key: string,
+    schema?: EmptySmartStorageSchema
+  ): V | null {
     const value = this.rawGet(key);
     if (value === null) return null;
     try {
-      return schema ? this.parse(schema, value) : (value as V);
+      return schema ? this.parse<V>(schema, value) : (value as V);
     } catch {
       this.remove(key);
       return null;
     }
   }
 
-  set<V extends object>(key: string, value: V, schema?: SmartStorageSchema<V>) {
-    const parsed = schema ? this.parse(schema, value) : (value as V);
+  set<V extends object>(
+    key: string,
+    value: V,
+    schema?: EmptySmartStorageSchema
+  ) {
+    const parsed = schema ? this.parse(schema, value) : value;
     this.rawSet(key, parsed);
     this.triggerOnChange(key);
   }
