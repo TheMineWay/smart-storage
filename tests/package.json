@@ -17,7 +17,7 @@
     "@themineway/smart-storage-js": "workspace:*"
   },
   "devDependencies": {
-    "vitest": "^3.1.1",
-    "zod": "^3.24.3"
+    "vitest": "^3.2.2",
+    "zod": "^3.25.56"
   }
 }
