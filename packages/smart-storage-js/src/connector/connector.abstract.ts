@@ -19,7 +19,7 @@ export abstract class AConnector {
   }
 
   /* Accessors */
-  get<V extends object>(
+  public get<V extends object>(
     key: string,
     schema?: EmptySmartStorageSchema
   ): V | null {
@@ -33,7 +33,7 @@ export abstract class AConnector {
     }
   }
 
-  set<V extends object>(
+  public set<V extends object>(
     key: string,
     value: V,
     schema?: EmptySmartStorageSchema
@@ -44,7 +44,7 @@ export abstract class AConnector {
   }
 
   /* Events */
-  private onChangeEvents = new Map<string, CallableFunction>();
+  private readonly onChangeEvents = new Map<string, CallableFunction>();
 
   public addOnChangeListener(
     callback: (key: string) => void
