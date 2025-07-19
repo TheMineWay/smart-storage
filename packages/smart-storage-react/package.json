@@ -1,6 +1,6 @@
 {
   "name": "@themineway/smart-storage-react",
-  "version": "1.0.0-alpha.14",
+  "version": "1.0.0-alpha.15",
   "description": "A React (TS) library that provides a smart and easy way to store data",
   "homepage": "https://themineway.github.io/smart-storage/docs/react/",
   "main": "dist/index.js",
@@ -41,7 +41,7 @@
     "zod": "^4.0.5"
   },
   "dependencies": {
-    "@themineway/smart-storage-js": "1.0.0-alpha.15",
+    "@themineway/smart-storage-js": "1.0.0-alpha.19",
     "react": "^19.1.0"
   }
 }
